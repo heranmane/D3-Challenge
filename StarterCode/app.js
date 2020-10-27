@@ -66,15 +66,14 @@ var chartGroup = svg.append("g")
             .append("circle")
             .attr("cx", d => xLinearScale(d.poverty))
             .attr("cy", d => yLinearScale(d.healthcare))
-            .attr("r", "15")
+            .attr("r", "20")
             .attr("fill", "teal")
             .attr("opacity", ".5")
-        
-        
+
     
         //============add texts to each datapoint=========
-        chartGroup.append("g")
-            .selectAll('text')
+         chartGroup
+         .selectAll(null)
             .data(stateData)
             .enter()
             .append("text")
@@ -85,16 +84,12 @@ var chartGroup = svg.append("g")
             .attr("y", function (d) {
                 return yLinearScale(d.healthcare)
             })
-            .attr("dy", -395)
             .attr("text-anchor", "middle")
             .attr("fill", "black")
-            .attr("font-size", "5px")
+            .attr("font-size", "4px")
             .style("font-weight", "bold")
             ;
 
-
-
-        
 
         // // // Step 6: Initialize tool tip
         // // // ==============================
