@@ -86,33 +86,33 @@ var chartGroup = svg.append("g")
             })
             .attr("text-anchor", "middle")
             .attr("fill", "black")
-            .attr("font-size", "4px")
+            .attr("font-size", "8px")
             .style("font-weight", "bold")
             ;
 
 
-        // // // Step 6: Initialize tool tip
-        // // // ==============================
-        // var toolTip = d3.tip()
-        //     .attr("class", "tooltip")
-        //     .offset([80, -60])
-        //     .html(function (d) {
-        //         return (`${d.abbr}<br>Poverty: ${d.poverty}<br>Health Care : ${d.healthcareLow}`);
-        //     });
+        // // Step 6: Initialize tool tip
+        // // ==============================
+        var toolTip = d3.tip()
+            .attr("class", "tooltip")
+            .offset([80, -60])
+            .html(function (d) {
+                return (`${d.state}<br>Poverty: ${d.poverty}<br>Health Care : ${d.healthcareLow}`);
+            });
 
-        // // // Step 7: Create tooltip in the chart
-        // // // ==============================
-        // chartGroup.call(toolTip);
+        // // Step 7: Create tooltip in the chart
+        // // ==============================
+        chartGroup.call(toolTip);
 
-        // // // Step 8: Create event listeners to display and hide the tooltip
-        // // // ==============================
-        // circlesGroup.on("click", function (data) {
-        //     toolTip.show(data, this);
-        // })
-        // //     // onmouseout event
-        //     .on("mouseout", function (data, index) {
-        //         toolTip.hide(data);
-        //     });
+        // // Step 8: Create event listeners to display and hide the tooltip
+        // // ==============================
+        circlesGroup.on("click", function (data) {
+            toolTip.show(data, this);
+        })
+        //     // onmouseout event
+            .on("mouseout", function (data, index) {
+                toolTip.hide(data);
+            });
 
         // // Create axes labels
         chartGroup.append("text")
@@ -121,7 +121,7 @@ var chartGroup = svg.append("g")
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .attr("class", "axisText")
-            .text("Lack Healthcare (%)");
+            .text("Lack of Healthcare (%)");
 
         chartGroup.append("text")
             .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
