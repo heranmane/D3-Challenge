@@ -66,9 +66,12 @@ var chartGroup = svg.append("g")
             .append("circle")
             .attr("cx", d => xLinearScale(d.poverty))
             .attr("cy", d => yLinearScale(d.healthcare))
-            .attr("r", "20")
+            .attr("r", "20px")
             .attr("fill", "teal")
+            .attr("stroke", "#69b3a2")
+            .attr("stroke-width", 3)
             .attr("opacity", ".5")
+        
 
     
         //============add texts to each datapoint=========
@@ -77,16 +80,16 @@ var chartGroup = svg.append("g")
             .data(stateData)
             .enter()
             .append("text")
-            .text(d => d.abbr)
+             .text(d => d.abbr)
             .attr("x", function (d) {
                 return xLinearScale(d.poverty)
             })
             .attr("y", function (d) {
-                return yLinearScale(d.healthcare)
+                return yLinearScale(d.healthcare )
             })
             .attr("text-anchor", "middle")
             .attr("fill", "black")
-            .attr("font-size", "8px")
+            .attr("font-size", "12px")
             .style("font-weight", "bold")
             ;
 
@@ -96,6 +99,7 @@ var chartGroup = svg.append("g")
         var toolTip = d3.tip()
             .attr("class", "tooltip")
             .offset([80, -60])
+            .style("font-size", "40")
             .html(function (d) {
                 return (`${d.state}<br>Poverty: ${d.poverty}<br>Health Care : ${d.healthcareLow}`);
             });
